@@ -38,7 +38,7 @@ form.onsubmit = (event) => {
 function convertCurrency (amount, price, symbol) {
     try {
         // Displaying the rate of the selected currency.
-        description.textContent = `${symbol} 1 = ${price}`
+        description.textContent = `${symbol} 1 = ${formatCurrencyBRL(price)}`
         // Apply the class that displays the footer.
         footer.classList.add("show-result")
     } catch (error) {
@@ -49,3 +49,10 @@ function convertCurrency (amount, price, symbol) {
     }
 }
 
+// Format the currency in Brazilian real.
+function formatCurrencyBRL (value) {
+    return Number(value).toLocaleString("pt-BR", {
+        style: "currency",
+        currency: "BRL",
+    })
+}
